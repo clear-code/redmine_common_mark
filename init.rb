@@ -18,5 +18,6 @@ Redmine::WikiFormatting.map do |format|
   format.register :commonmark,
                   Redmine::WikiFormatting::CommonMark::Formatter,
                   Redmine::WikiFormatting::CommonMark::Helper,
-                  Redmine::WikiFormatting::CommonMark::HtmlParser
+                  Redmine::WikiFormatting::CommonMark::HtmlParser,
+                  label: "CommonMark"
 end
