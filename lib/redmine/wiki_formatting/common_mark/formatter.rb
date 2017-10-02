@@ -27,12 +27,13 @@ module Redmine
                      else
                        nil
                      end
+          source = node.string_content
           html = if language.present? && Redmine::SyntaxHighlighting.language_supported?(language)
-                   "<pre><code class=\"#{CGI.escapeHTML(language)} syntaxhl\">" +
-                     Redmine::SyntaxHighlighting.highlight_by_language(code, language) +
+                   "<pre><code class=\"#{escape_html(language)} syntaxhl\">" +
+                     Redmine::SyntaxHighlighting.highlight_by_language(source, language) +
                      "</code></pre>"
                  else
-                   "<pre>" + CGI.escapeHTML(code) + "</pre>"
+                   "<pre>" + escape_html(source) + "</pre>"
                  end
           out(html)
         end
