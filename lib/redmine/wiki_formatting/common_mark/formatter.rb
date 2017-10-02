@@ -58,10 +58,13 @@ module Redmine
       end
 
       class FormatterWrapper
-        EXTENSIONS = [:autolink, :table]
+        EXTENSIONS = %i[autolink table strikethrough]
 
         def initialize
-          @renderer = Redmine::WikiFormatting::CommonMark::HTML.new(extensions: EXTENSIONS)
+          @renderer = Redmine::WikiFormatting::CommonMark::HTML.new(
+            options: %i[DEFAULT HARDBREAKS],
+            extensions: EXTENSIONS
+          )
         end
 
         def render(text)
