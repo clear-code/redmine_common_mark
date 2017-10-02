@@ -50,7 +50,7 @@ module Redmine
         private
 
         def formatter
-          @@formater ||= FormatterWrpper.new
+          @@formater ||= Redmine::WikiFormatting::CommonMark::FormatterWrapper.new
         end
       end
 
@@ -58,7 +58,7 @@ module Redmine
         EXTENSIONS = [:autolink, :table]
 
         def initialize
-          @renderer = ::CommonMark::HTML.new(extensions: EXTENSIONS)
+          @renderer = Redmine::WikiFormatting::CommonMark::HTML.new(extensions: EXTENSIONS)
         end
 
         def render(text)
