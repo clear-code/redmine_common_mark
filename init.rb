@@ -15,5 +15,8 @@ Rails.configuration.to_prepare do
 end
 
 Redmine::WikiFormatting.map do |format|
-  format.register :commonmark, CommonMark::Formatter, CommonMark::Helper, CommonMark::HtmlParser
+  format.register :commonmark,
+                  Redmine::WikiFormatting::CommonMark::Formatter,
+                  Redmine::WikiFormatting::CommonMark::Helper,
+                  Redmine::WikiFormatting::CommonMark::HtmlParser
 end
