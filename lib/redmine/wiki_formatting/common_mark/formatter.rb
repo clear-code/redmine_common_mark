@@ -62,7 +62,7 @@ module Redmine
         end
 
         def render(text)
-          doc = CommonMarker.render_doc(text, :DEFAULT, extensions)
+          doc = CommonMarker.render_doc(text, :DEFAULT, EXTENSIONS)
           @renderer.render(doc)
         end
       end
