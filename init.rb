@@ -1,6 +1,6 @@
-require "common_mark/formatter"
-require "common_mark/helper"
-require "common_mark/html_parser"
+require "redmine/wiki_formatting/common_mark/formatter"
+require "redmine/wiki_formatting/common_mark/helper"
+require "redmine/wiki_formatting/common_mark/html_parser"
 
 Redmine.plugin_register :common_mark do
   name "CommonMark plugin"
