@@ -1,4 +1,4 @@
-module Redmin
+module Redmine
   module WikiFormatting
     module CommonMark
       class HtmlParser < Redmine::WikiFormatting::Markdown::HtmlParser
