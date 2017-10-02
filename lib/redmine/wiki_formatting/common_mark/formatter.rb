@@ -53,7 +53,7 @@ module Redmine
         private
 
         def formatter
-          @@formater ||= Redmine::WikiFormatting::CommonMark::FormatterWrapper.new
+          @@formater = Redmine::WikiFormatting::CommonMark::FormatterWrapper.new
         end
       end
 
