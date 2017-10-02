@@ -1,14 +1,17 @@
 # RedmineCommonMark
 
-TODO
+This plugin provides [CommonMark](http://commonmark.org/) notation using [CommonMarker](https://github.com/gjtorikian/commonmarker).
 
 ## Installation
 
-TODO
+```text
+$ cd redmine/plugins
+$ git clone https://github.com/okkez/redmine_common_mark.git common_mark
+```
 
-## Usage
+And restart your Redmine.
 
-TODO: Write usage instructions here
+Vist your Redmine's settings and chenge text formatting to CommonMark.
 
 ## Contributing
 
