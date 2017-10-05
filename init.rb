@@ -10,10 +10,6 @@ Redmine::Plugin.register :common_mark do
   author_url "https://github.com/okkez/redmine_common_mark"
 end
 
-Rails.configuration.to_prepare do
-  
-end
-
 Redmine::WikiFormatting.map do |format|
   format.register :commonmark,
                   Redmine::WikiFormatting::CommonMark::Formatter,
