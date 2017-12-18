@@ -73,7 +73,7 @@ module Redmine
       end
 
       class FormatterWrapper
-        EXTENSIONS = %i[autolink table strikethrough]
+        EXTENSIONS = %i[autolink table tagfilter strikethrough]
 
         def initialize
           @renderer = Redmine::WikiFormatting::CommonMark::HTML.new(
