@@ -1,3 +1,4 @@
+# coding: utf-8
 # Redmine - project management software
 # Copyright (C) 2006-2017  Jean-Philippe Lang
 #
@@ -88,6 +89,18 @@ STR
   def test_locals_links_should_not_have_external_css_class
     text = 'This is a [link](/issues)'
     assert_equal '<p>This is a <a href="/issues">link</a></p>', @formatter.new(text).to_html.strip
+  end
+
+  def test_url
+    text = 'http://www.example.com: example'
+    assert_equal '<p><a href="http://www.example.com" class="external">http://www.example.com</a>: example</p>',
+                 @formatter.new(text).to_html.strip
+  end
+
+  def test_url_with_multibyte
+    text = 'http://www.example.com/ほげ: はげ'
+    assert_equal '<p><a href="http://www.example.com/%E3%81%BB%E3%81%92" class="external">http://www.example.com/ほげ</a>: はげ</p>',
+                 @formatter.new(text).to_html.strip
   end
 
   end
