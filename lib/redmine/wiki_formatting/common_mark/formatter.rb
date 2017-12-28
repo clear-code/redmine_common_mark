@@ -9,13 +9,14 @@ module Redmine
         include Redmine::Helpers::URL
 
         def link(node)
-          return unless uri_with_safe_scheme?(node.url)
+          url = escape_href(node.url)
+          return unless uri_with_safe_scheme?(url)
 
-          out('<a href="', node.url.nil? ? '' : escape_href(node.url), '"')
+          out('<a href="', url.nil? ? '' : url, '"')
           if node.title && !node.title.empty?
             out(' title="', escape_html(node.title), '"')
           end
-          unless node.url && node.url.start_with?("/")
+          unless url && url.start_with?("/")
             out(' class="external"')
           end
           out('>', :children, '</a>')
