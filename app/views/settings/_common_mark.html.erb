@@ -1,0 +1,30 @@
+<%
+  default_settings = ActiveSupport::HashWithIndifferentAccess.new(Redmine::Plugin.find(:common_mark).settings[:default])
+  _settings = default_settings.merge(settings)
+-%>
+
+<%= field_set_tag("Parse options") do %>
+  <% CommonMarker::Config::Parse.keys.each do |key| %>
+    <% next if key == :DEFAULT -%>
+    <%= render partial: "settings/field", locals: { settings: _settings, prefix: "parse", key: key } %>
+  <% end %>
+  Use default option if all options are disabled.
+  See <%= link_to("Parse options", "https://github.com/gjtorikian/commonmarker#parse-options") %> for more details.
+<% end %>
+
+<%= field_set_tag("Render options") do %>
+  <% CommonMarker::Config::Render.keys.each do |key| %>
+    <% next if key == :DEFAULT -%>
+    <%= render partial: "settings/field", locals: { settings: _settings, prefix: "render", key: key } %>
+  <% end %>
+  Use default option if all options are disabled.
+  See <%= link_to("Render options", "https://github.com/gjtorikian/commonmarker#render-options") %> for more details.
+<% end %>
+
+<%= field_set_tag("extensions") do %>
+  <% CommonMarker.extensions.each do |extension| %>
+    <%= render partial: "settings/field", locals: { settings: _settings, prefix: "extension", key: extension } %>
+  <% end %>
+  See <%= link_to("Extensions", "https://github.com/gjtorikian/commonmarker#extensions") %> for more details.
+<% end %>
+
