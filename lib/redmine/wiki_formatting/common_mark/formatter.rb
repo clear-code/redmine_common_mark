@@ -74,18 +74,46 @@ module Redmine
       end
 
       class FormatterWrapper
-        EXTENSIONS = %i[autolink table tagfilter strikethrough]
-
         def initialize
           @renderer = Redmine::WikiFormatting::CommonMark::HTML.new(
-            options: %i[DEFAULT HARDBREAKS],
-            extensions: EXTENSIONS
+            options: render_options,
+            extensions: extensions
           )
         end
 
         def render(text)
-          doc = CommonMarker.render_doc(text, :DEFAULT, EXTENSIONS)
+          doc = CommonMarker.render_doc(text, parse_options, extensions)
           @renderer.render(doc)
+        end
+
+        private
+
+        def settings
+          settings = ActiveSupport::HashWithIndifferentAccess.new(Redmine::Plugin.find(:common_mark).settings[:default])
+          settings.merge(Setting.plugin_common_mark.presence || {})
+        end
+
+        def parse_options
+          options = CommonMarker::Config::Parse.keys.select do |key|
+            name = "parse_#{key.to_s.downcase}"
+            settings[name] == "1"
+          end
+          options.presence || [:DEFAULT]
+        end
+
+        def render_options
+          options = CommonMarker::Config::Render.keys.select do |key|
+            name = "render_#{key.to_s.downcase}"
+            settings[name] == "1"
+          end
+          options.presence || [:DEFAULT]
+        end
+
+        def extensions
+          CommonMarker.extensions.select do |extension|
+            name = "extension_#{extension}"
+            settings[name] == "1"
+          end.map(&:to_sym)
         end
       end
     end
