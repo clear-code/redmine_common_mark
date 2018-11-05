@@ -1,1 +1,1 @@
-gem "commonmarker", "=> 0.18.1"
+gem "commonmarker", ">= 0.18.1"
