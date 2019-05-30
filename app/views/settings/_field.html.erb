@@ -2,6 +2,6 @@
 <p>
   <%= label_tag do %>
     <%= key %>
-    <%= check_box_tag("settings[#{name}]", "1", settings.present? && settings[name] == "1") %>
+    <%= check_box("settings", name, { :checked => settings.present? && settings[name] == "1" }) %>
   <% end -%>
 </p>
