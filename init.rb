@@ -25,7 +25,8 @@ Redmine::Plugin.register :common_mark do
              extension_table: "1",
              extension_strikethrough: "1",
              extension_autolink: "1",
-             extension_tagfilter: "1"
+             extension_tagfilter: "1",
+             extension_tasklist: "1"
            }, partial: "settings/common_mark"
 end
 
