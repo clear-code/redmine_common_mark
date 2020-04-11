@@ -7,8 +7,8 @@ Redmine::Plugin.register :common_mark do
   version "0.3.1"
   author "Kenji Okimoto"
   description "This plugin provides CommonMark notation"
-  url "https://github.com/okkez/redmine_common_mark"
-  author_url "https://github.com/okkez/redmine_common_mark"
+  url "https://github.com/clear-code/redmine_common_mark"
+  author_url "https://github.com/clear-code/redmine_common_mark"
   settings default: {
              parse_validate_utf8: "0",
              parse_smart: "0",

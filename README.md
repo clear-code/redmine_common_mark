@@ -6,7 +6,7 @@ This plugin provides [CommonMark](http://commonmark.org/) notation using [Common
 
 ```text
 $ cd redmine/plugins
-$ git clone https://github.com/okkez/redmine_common_mark.git common_mark
+$ git clone https://github.com/clear-code/redmine_common_mark.git common_mark
 $ cd ..
 $ bundle install
 ```
@@ -17,7 +17,7 @@ Vist your Redmine's settings and chenge text formatting to CommonMark.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/okkez/redmine_common_mark.
+Bug reports and pull requests are welcome on GitHub at https://github.com/clear-code/redmine_common_mark.
 
 ## License
 
