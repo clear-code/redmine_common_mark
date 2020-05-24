@@ -30,8 +30,8 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
       - name: Install dependencies
         run: |
-          apt update
-          apt install -y libsqlite3-dev
+          sudo apt update
+          sudo apt install -y libsqlite3-dev
       - name: Initialize Redmine
         run: |
           cd redmine
