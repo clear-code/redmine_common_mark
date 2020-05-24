@@ -1,0 +1,45 @@
+name: Test
+on:
+  - push
+  - pull_request
+jobs:
+  test:
+    name: "Redmine ${{ matrix.redmine }} & Ruby ${{ matrix.ruby }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        redmine:
+          - "4.0-stable"
+          - "4.1-stable"
+          - "master"
+        ruby:
+          - "2.5"
+          - "2.6"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: redmine/redmine
+          ref: ${{ matrix.redmine }}
+          path: ../redmine
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Install plugin
+        run: |
+          cd ../redmine/plugins
+          ln -fs ../../redmine_common_mark ./
+      - name: Initialize Redmine
+        run: |
+          cd ../redmine
+          bundle install
+          bin/rails db:create
+          bin/rails generate_secret_token
+          bin/rails db:migrate
+          bin/rails redmine:load_default_data REDMINE_LANG=en
+          bin/rails redmine:plugins:migrate
+      - name: Run test
+        run: |
+          cd ../redmine
+          RAILS_ENV=test bin/rails redmine:plugins:test
