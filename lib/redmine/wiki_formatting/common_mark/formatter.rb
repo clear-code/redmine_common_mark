@@ -12,14 +12,18 @@ module Redmine
           url = escape_href(node.url)
           return unless uri_with_safe_scheme?(url)
 
-          out('<a href="', url.nil? ? '' : url, '"')
-          if node.title && !node.title.empty?
-            out(' title="', escape_html(node.title), '"')
+          if url && url.start_with?("mailto:")
+            out('<a href="', url, '"', '>', :children, '</a>')
+          else
+            out('<a href="', url.nil? ? '' : url, '"')
+            if node.title && !node.title.empty?
+              out(' title="', escape_html(node.title), '"')
+            end
+            unless url && url.start_with?("/")
+              out(' class="external"')
+            end
+            out('>', :children, '</a>')
           end
-          unless url && url.start_with?("/")
-            out(' class="external"')
-          end
-          out('>', :children, '</a>')
         end
 
         def code_block(node)

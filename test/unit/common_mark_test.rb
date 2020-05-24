@@ -193,6 +193,13 @@ class Redmine::WikiFormatting::CommonMarkFormatterTest < ActionView::TestCase
                  @formatter.new(text).to_html.strip
   end
 
+  def test_user_with_atmark_in_login
+    User.generate!(login: "user@example.com")
+    text = 'Hey @user@example.com !'
+    assert_equal '<p>Hey @user@example.com !</p>',
+                 @formatter.new(text).to_html.strip
+  end
+
   private
 
   def assert_section_with_hash(expected, text, index)
