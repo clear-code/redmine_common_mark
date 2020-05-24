@@ -9,7 +9,6 @@ jobs:
       fail-fast: false
       matrix:
         redmine:
-          - "4.0-stable"
           - "4.1-stable"
           - "master"
         ruby:

@@ -2,9 +2,13 @@
 
 This plugin provides [CommonMark](https://commonmark.org/) notation using [CommonMarker](https://github.com/gjtorikian/commonmarker).
 
+## Requirements
+
+* Redmine 4.1 or later
+
 ## Installation
 
-```text
+```console
 $ cd redmine/plugins
 $ git clone https://github.com/clear-code/redmine_common_mark.git common_mark
 $ cd ..
