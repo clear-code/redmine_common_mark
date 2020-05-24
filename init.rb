@@ -5,7 +5,7 @@ require "redmine/wiki_formatting/common_mark/html_parser"
 Redmine::Plugin.register :common_mark do
   name "CommonMark plugin"
   version "0.3.2"
-  author "Kenji Okimoto"
+  author 'ClearCode Inc.'
   description "This plugin provides CommonMark notation"
   url "https://github.com/clear-code/redmine_common_mark"
   author_url "https://github.com/clear-code/redmine_common_mark"
