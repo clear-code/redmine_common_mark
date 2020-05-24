@@ -18,21 +18,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
         with:
           repository: redmine/redmine
           ref: ${{ matrix.redmine }}
-          path: ../redmine
+          path: redmine
+      - uses: actions/checkout@v2
+          path: redmine/plugins/common_mark
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-      - name: Install plugin
-        run: |
-          cd ../redmine/plugins
-          ln -fs ../../redmine_common_mark ./
       - name: Initialize Redmine
         run: |
-          cd ../redmine
+          cd redmine
           bundle install
           bin/rails db:create
           bin/rails generate_secret_token
@@ -41,5 +38,5 @@ jobs:
           bin/rails redmine:plugins:migrate
       - name: Run test
         run: |
-          cd ../redmine
+          cd redmine
           RAILS_ENV=test bin/rails redmine:plugins:test
