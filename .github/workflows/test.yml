@@ -31,6 +31,9 @@ jobs:
       - name: Initialize Redmine
         run: |
           cd redmine
+          cp \
+            plugins/common_mark/config/database.yml.example \
+            config/database.yml
           bundle install
           bin/rails db:create
           bin/rails generate_secret_token
