@@ -200,6 +200,12 @@ class Redmine::WikiFormatting::CommonMarkFormatterTest < ActionView::TestCase
                  @formatter.new(text).to_html.strip
   end
 
+  def test_emoji
+    text = ':pray: :nonexistent:'
+    assert_equal '<p>🙏 :nonexistent:</p>',
+                 @formatter.new(text).to_html.strip
+  end
+
   private
 
   def assert_section_with_hash(expected, text, index)

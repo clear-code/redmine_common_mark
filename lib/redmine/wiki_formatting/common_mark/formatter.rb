@@ -1,5 +1,6 @@
 require "cgi/util"
 require "commonmarker"
+require "gemoji"
 
 module Redmine
   module WikiFormatting
@@ -52,6 +53,19 @@ module Redmine
             out(' title="', escape_html(node.title), '"')
           end
           out('>')
+        end
+
+        def text(node)
+          content = node.string_content.gsub(/:([a-zA-Z\d_]+?):/) do |matched|
+            emoji_name = $1
+            emoji = Emoji.find_by_alias(emoji_name)
+            if emoji
+              emoji.raw
+            else
+              matched
+            end
+          end
+          out(escape_html(content))
         end
       end
 
