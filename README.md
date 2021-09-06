@@ -2,9 +2,11 @@
 
 This plugin provides [CommonMark](https://commonmark.org/) notation using [CommonMarker](https://github.com/gjtorikian/commonmarker).
 
+You don't need this with Redmine 5.0 or later because Redmine 5.0 has CommonMark support.
+
 ## Requirements
 
-* Redmine 4.1 or later
+* Redmine 4.1 and Redmine 4.2.
 
 ## Installation
 
