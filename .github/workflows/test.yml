@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: redmine/plugins/common_mark
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
       - name: Install dependencies
