@@ -10,10 +10,12 @@ jobs:
       matrix:
         redmine:
           - "4.1-stable"
+          - "4.2-stable"
           - "master"
         ruby:
-          - "2.5"
           - "2.6"
+          - "2.7"
+          - "3.0"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
