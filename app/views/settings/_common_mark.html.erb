@@ -4,7 +4,7 @@
 -%>
 
 <%= field_set_tag("Parse options") do %>
-  <% CommonMarker::Config::Parse.keys.each do |key| %>
+  <% CommonMarker::Config::OPTS.fetch(:parse).keys.each do |key| %>
     <% next if key == :DEFAULT -%>
     <%= render partial: "settings/field", locals: { settings: _settings, prefix: "parse", key: key } %>
   <% end %>
@@ -13,7 +13,7 @@
 <% end %>
 
 <%= field_set_tag("Render options") do %>
-  <% CommonMarker::Config::Render.keys.each do |key| %>
+  <% CommonMarker::Config::OPTS.fetch(:render).keys.each do |key| %>
     <% next if key == :DEFAULT -%>
     <%= render partial: "settings/field", locals: { settings: _settings, prefix: "render", key: key } %>
   <% end %>
