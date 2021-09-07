@@ -8,12 +8,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        redmine:
-          - "4.1-stable"
-          - "4.2-stable"
-        ruby:
-          - "2.6"
-          - "2.7"
+        include:
+          - redmine: "4.1-stable"
+            ruby: "2.6"
+          - redmine: "4.2-stable"
+            ruby: "2.6"
+          - redmine: "4.2-stable"
+            ruby: "2.7"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
