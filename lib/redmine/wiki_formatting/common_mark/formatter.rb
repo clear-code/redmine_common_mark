@@ -98,7 +98,7 @@ module Redmine
         end
 
         def parse_options
-          options = CommonMarker::Config::Parse.keys.select do |key|
+          options = CommonMarker::Config::OPTS.fetch(:parse).keys.select do |key|
             name = "parse_#{key.to_s.downcase}"
             settings[name] == "1"
           end
@@ -106,7 +106,7 @@ module Redmine
         end
 
         def render_options
-          options = CommonMarker::Config::Render.keys.select do |key|
+          options = CommonMarker::Config::OPTS.fetch(:render).keys.select do |key|
             name = "render_#{key.to_s.downcase}"
             settings[name] == "1"
           end
